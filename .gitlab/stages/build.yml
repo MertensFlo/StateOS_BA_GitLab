@@ -1,9 +1,9 @@
 include:
-  - local: .gitlab/templates/dependencies.yml
-  - local: .gitlab/templates/checkout_submodul.yml
-  - local: .gitlab/templates/install_arm-none-eabi-gcc.yml
+  - local: .gitlab/templates/install_dependencies.yml
+  - local: .gitlab/templates/checkout_submodule.yml
+  - local: .gitlab/templates/install_pipeline_specific.yml
   - local: .gitlab/templates/check_installs.yml
-
+  - local: .gitlab/templates/make_build.yml
 
 stages:
   - build
@@ -11,21 +11,11 @@ stages:
 build:
   stage: build 
   script:
-  - echo $GLOBAL_VAR
-  - echo $LOCAL_VAR
-  - echo $OK
-  - env | sort
   - ls -la $CI_PROJECT_DIR
   - !reference [.install_dependencies, script]
   - git -v
   - !reference [.checkout_submodule, script]
-  - apt-get -y -qq update
-  - apt-get -y -qq install cmake ninja-build
-  - !reference [.install_arm, script]
+  - !reference [.install_pipeline_specific, script]
   - !reference [.check_installs, script]
-  - cmake -S. -Bbuild -GNinja
-  - cmake --build build -v
-  needs:
-    pipeline: $PARENT_PIPELINE_ID
-    job: job_which_creates_something
-    artifacts: true
+  - !reference [.make_build, script]
+  

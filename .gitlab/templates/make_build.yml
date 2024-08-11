@@ -1,0 +1,7 @@
+.make_build:
+  script:
+  - >
+    if [ "$flag_ninja" == "true" ]; then
+      cmake -S. -Bbuild -GNinja
+    fi
+  - cmake --build build -v

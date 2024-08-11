@@ -1,0 +1,26 @@
+.install_dependencies:
+  script:
+  - >
+    if [ "$flag_git" == "true" ]; then
+      apt-get update && apt-get install -y git
+    fi
+  - >
+    if [ "$flag_wget" == "true" ]; then
+      apt-get install -y wget
+    fi
+  - >
+    if [ "$flag_xz_utils" == "true" ]; then
+      apt-get install -y xz-utils 
+    fi
+  - >
+    if [ "$flag_arm" == "true" ]; then
+      apt-get install -y gcc-arm-none-eabi
+    fi
+  - >
+    if [ "$flag_build_essential" == "true" ]; then
+      apt-get install -y build-essential
+    fi
+  - >
+    if [ "$flag_ninja" == "true" ]; then
+      apt-get -y -qq install cmake ninja-build
+    fi

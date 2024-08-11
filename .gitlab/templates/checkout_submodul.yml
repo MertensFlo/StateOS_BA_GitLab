@@ -1,3 +1,6 @@
 .checkout_submodule:
   script:
-  - git submodule update --init --remote --recursive
+  - >
+    if [ "$flag_submodule" == "true" ]; then
+      git submodule update --init --remote --recursive
+    fi

@@ -1,3 +1,8 @@
 .check_installs:
   script:
-    - arm-none-eabi-gcc -v
+    - >
+      if [ "$flag_arm" == "true" ]; then
+        arm-none-eabi-gcc -v
+      else
+        echo no installs checked
+      fi

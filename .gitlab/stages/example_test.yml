@@ -13,3 +13,4 @@ example_test:
   - !reference [.install_arm, script]
   - !reference [.check_installs, script]
   - bash ./.example-test.sh
+    #- if [ "$flag" == "true" ]; then MODULE="demo1"; else MODULE="demo2"; fi
