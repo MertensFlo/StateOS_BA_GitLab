@@ -1,0 +1,5 @@
+.install_arm:
+  script:
+  - wget -q https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz
+  - tar -xf arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz
+  - GITHUB_PATH="$( cd $(git rev-parse --show-cdup); pwd)/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin"

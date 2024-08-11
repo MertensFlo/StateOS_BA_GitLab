@@ -1,0 +1,3 @@
+.checkout_submodule:
+  script:
+  - git submodule update --init --remote --recursive

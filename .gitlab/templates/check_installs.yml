@@ -1,0 +1,3 @@
+.check_installs:
+  script:
+    - arm-none-eabi-gcc -v
