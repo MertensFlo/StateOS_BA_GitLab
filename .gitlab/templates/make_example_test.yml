@@ -2,3 +2,4 @@
   script:
   - if [example_test]; then
       bash ./.gitlab/scripts/make_example_test.sh
+    if

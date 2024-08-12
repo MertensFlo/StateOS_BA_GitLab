@@ -2,3 +2,4 @@
   script:
   - if [static_test]; then
       bash ./.gitlab/scripts/make_static_code_test.sh
+    if
