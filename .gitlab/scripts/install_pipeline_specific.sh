@@ -3,8 +3,6 @@
 FLAG_ARM=$1
 ARM_VERSION=$2
 
-echo $FLAG_ARM
-echo $ARM_VERSION
 echo "script install pipeline specific"
 if [ $FLAG_ARM ]; then
     wget -q https://developer.arm.com/-/media/Files/downloads/gnu/$ARM_VERSION/binrel/arm-gnu-toolchain-$ARM_VERSION-x86_64-arm-none-eabi.tar.xz

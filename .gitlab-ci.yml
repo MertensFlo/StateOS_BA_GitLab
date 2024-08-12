@@ -6,4 +6,4 @@ build:
     include: 
     - local: .gitlab/stages/build.yml
     forward: 
-      yaml_variables: true
+      pipeline_variables: true

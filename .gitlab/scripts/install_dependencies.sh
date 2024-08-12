@@ -7,17 +7,7 @@ FLAG_ARM=$4
 FLAG_BUILD_ESSENTIAL=$5
 FLAG_NINJA=$6
 
-echo $FLAG_GIT
-echo $FLAG_WGET
-echo $FLAG_XZ_UTILS
-echo $FLAG_ARM
-echo $FLAG_BUILD_ESSENTIAL
-echo $FLAG_NINJA
 echo "script install dependencies"
-echo $1
-echo 1
-echo "$1"
-echo "end of variable test"
 if [ $FLAG_GIT ]; then
     apt-get update && apt-get install -y git
 fi
