@@ -7,7 +7,7 @@ include:
   - local: .gitlab/templates/make_static_code_test.yml
   - local: .gitlab/templates/make_unit_test.yml
   
-  
+
 test:
   stage: test
   script: 
@@ -15,19 +15,19 @@ test:
   - !reference [.checkout_submodule, script]
   - !reference [.install_pipeline_specific, script]
   - !reference [.check_installs, script]
-  - if [ "$CURRENT_TEST" == "example" ], then 
+  - if [ "$CURRENT_TEST" == "example" ]; then 
       example_test=true
     else
       example_test=false
     fi
   - !reference [.make_example_test, script]
-  - if [ "$CURRENT_TEST" == "static" ], then 
+  - if [ "$CURRENT_TEST" == "static" ]; then 
       static_test=true
     else
       static_test=false
     fi
   - !reference [.make_static_code_test, script]
-  - if [ "$CURRENT_TEST" == "unit" ], then 
+  - if [ "$CURRENT_TEST" == "unit" ]; then 
       unit_test=true
     else
       unit_test=false
