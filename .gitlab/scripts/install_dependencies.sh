@@ -8,8 +8,9 @@ FLAG_BUILD_ESSENTIAL=$5
 FLAG_NINJA=$6
 
 echo "script install dependencies"
+apt-get update
 if [ $FLAG_GIT ]; then
-    apt-get update && apt-get install -y git
+    apt-get install -y git
 fi
 
 if [ $FLAG_WGET ]; then
