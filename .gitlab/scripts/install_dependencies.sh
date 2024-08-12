@@ -4,9 +4,15 @@ FLAG_GIT=$1
 FLAG_WGET=$2
 FLAG_XZ_UTILS=$3
 FLAG_ARM=$4
-FLAG_BUILD_ESSENTIAL=$%
+FLAG_BUILD_ESSENTIAL=$5
 FLAG_NINJA=$6
 
+echo $FLAG_GIT
+echo $FLAG_WGET
+echo $FLAG_XZ_UTILS
+echo $FLAG_ARM
+echo $FLAG_BUILD_ESSENTIAL
+echo $FLAG_NINJA
 
 if [ $FLAG_GIT ]; then
     apt-get update && apt-get install -y git
