@@ -1,37 +1,5 @@
 image: $BUILD_SYSTEM
 
-inputs:
-    BUILD_SYSTEM:
-      type: string
-    WORKING_BRANCH: 
-      type: string
-    WORKING_REPO: 
-      type: string
-    WORKING_ORG:
-      type: string
-    ARM_VERSION: 
-      type: string
-    EXAMPLE_TEST: 
-      type: boolean
-    STATIC_TEST: 
-      type: boolean
-    UNIT_TEST: 
-      type: boolean
-    flag_git: 
-      type: boolean
-    flag_wget: 
-      type: boolean
-    flag_xz_utils: 
-      type: boolean
-    flag_build_essential: 
-      type: boolean
-    flag_arm: 
-      type: boolean
-    flag_ninja: 
-      type: boolean
-    flag_submodule: 
-      type: boolean
-
 build:
   stage: build
   trigger:
