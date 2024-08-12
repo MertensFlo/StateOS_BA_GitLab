@@ -5,7 +5,7 @@ build:
   trigger:
     include: 
     - local: .gitlab/stages/build.yml
-    strategie: depend
+    strategy: depend
     forward: 
       pipeline_variables: true
 
@@ -19,7 +19,7 @@ example_test:
   trigger:
     include: 
     - local: .gitlab/stages/test.yml
-    strategie: depend
+    strategy: depend
     forward: 
       pipeline_variables: true
 
