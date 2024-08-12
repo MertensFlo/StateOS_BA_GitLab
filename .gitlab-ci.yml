@@ -7,3 +7,40 @@ build:
     - local: .gitlab/stages/build.yml
     forward: 
       pipeline_variables: true
+
+example_test:
+  stage: test
+  rules: 
+    - if: $flag_example_test
+  variables: 
+    CURRENT_TEST: "example"
+  trigger:
+    include: 
+    - local: .gitlab/stages/test.yml
+    strategy: depend
+    forward: 
+      pipeline_variables: true
+
+static_test:
+  rules: 
+    - if: $flag_static_test
+  variables:
+    CURRENT_TEST: "static"
+  trigger:
+    include: 
+    - local: .gitlab/stages/test.yml
+    strategy: depend
+    forward: 
+      pipeline_variables: true
+
+unit_test:
+  rules: 
+    - if: $flag_unit_test
+  variables:
+    CURRENT_TEST: "unit"
+  trigger:
+    include: 
+    - local: .gitlab/stages/test.yml
+    strategy: depend
+    forward: 
+      pipeline_variables: true
