@@ -1,8 +1,3 @@
 .check_installs:
   script:
-    - >
-      if [ "$flag_arm" == "true" ]; then
-        arm-none-eabi-gcc -v
-      else
-        echo no installs checked
-      fi
+    - bash ./.gitlab/scripts/check_installs.sh $flag_arm

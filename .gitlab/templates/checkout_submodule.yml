@@ -1,6 +1,3 @@
 .checkout_submodule:
   script:
-  - >
-    if [ "$flag_submodule" == "true" ]; then
-      git submodule update --init --remote --recursive
-    fi
+  - bash ./.gitlab/scripts/checkout_submmodule.sh $flag_submodule
