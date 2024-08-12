@@ -1,5 +1,6 @@
 .make_unit_test:
   script:
-  - if [unit_test]; then
-      bash ./.gitlab/scripts/make_unit_test.sh
+  - >
+    if [unit_test]; then
+      bash ./.gitlab/scripts/make_unit_test.sh;
     if
