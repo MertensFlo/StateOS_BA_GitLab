@@ -10,6 +10,7 @@ build:
 
 example_test:
   stage: test
+  needs: ["build"]
   rules: 
     - if: $flag_example_test
   variables: 
@@ -17,11 +18,12 @@ example_test:
   trigger:
     include: 
     - local: .gitlab/stages/test.yml
-    strategy: depend
     forward: 
       pipeline_variables: true
 
 static_test:
+  stage: test
+  needs: ["build"]
   rules: 
     - if: $flag_static_test
   variables:
@@ -34,6 +36,8 @@ static_test:
       pipeline_variables: true
 
 unit_test:
+  stage: test
+  needs: ["build"]
   rules: 
     - if: $flag_unit_test
   variables:
