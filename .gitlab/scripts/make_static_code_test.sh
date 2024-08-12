@@ -1,3 +1,7 @@
 #!/bin/bash
 
-bash ./.stdc++-test.sh
+STATIC_TEST=$1
+
+if [ $STATIC_TEST ]; then
+    bash ./.stdc++-test.sh
+fi
