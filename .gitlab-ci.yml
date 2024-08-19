@@ -12,7 +12,7 @@ build:
 
 example_test:
   stage: test
-  needs: ["build"]
+  #needs: ["build"]
   rules: 
     - if: $flag_example_test
   variables: 
