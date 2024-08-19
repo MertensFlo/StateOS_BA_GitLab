@@ -4,7 +4,8 @@ build:
   stage: build
   trigger:
     include: 
-    - local: .gitlab/stages/build.yml
+    #- local: .gitlab/stages/build.yml
+    - 'https://github.com/$WorkingOrg/StateOS_BA_GitLab/blob/dev/.gitlab/stages/test.yml'
     strategy: depend
     forward: 
       pipeline_variables: true
@@ -32,6 +33,7 @@ static_test:
     CURRENT_TEST: "static"
   trigger:
     include: 
+    #- 'https://github.com/MertensFlo/StateOS_BA_GitLab/blob/dev/.gitlab/stages/test.yml'
     - local: .gitlab/stages/test.yml
     strategy: depend
     forward: 
