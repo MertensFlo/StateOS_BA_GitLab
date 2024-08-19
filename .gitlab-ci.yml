@@ -5,7 +5,7 @@ build:
   trigger:
     include: 
     #- local: .gitlab/stages/build.yml
-    - 'https://github.com/$WORKING_ORG/StateOS_BA_GitLab/blob/dev/.gitlab/stages/test.yml'
+    - 'https://github.com/$WORKING_ORG/$WORKING_REPO/blob/$WORKING_BRANCH/.gitlab/stages/build.yml'
     strategy: depend
     forward: 
       pipeline_variables: true
@@ -19,7 +19,7 @@ example_test:
     CURRENT_TEST: "example"
   trigger:
     include: 
-    - local: .gitlab/stages/test.yml
+    - 'https://github.com/$WORKING_ORG/$WORKING_REPO/blob/$WORKING_BRANCH/.gitlab/stages/test.yml'
     strategy: depend
     forward: 
       pipeline_variables: true
@@ -33,8 +33,7 @@ static_test:
     CURRENT_TEST: "static"
   trigger:
     include: 
-    #- 'https://github.com/MertensFlo/StateOS_BA_GitLab/blob/dev/.gitlab/stages/test.yml'
-    - local: .gitlab/stages/test.yml
+    - 'https://github.com/$WORKING_ORG/$WORKING_REPO/blob/$WORKING_BRANCH/.gitlab/stages/test.yml'
     strategy: depend
     forward: 
       pipeline_variables: true
@@ -48,7 +47,7 @@ unit_test:
     CURRENT_TEST: "unit"
   trigger:
     include: 
-    - local: .gitlab/stages/test.yml
+    - 'https://github.com/$WORKING_ORG/$WORKING_REPO/blob/$WORKING_BRANCH/.gitlab/stages/test.yml'
     strategy: depend
     forward: 
       pipeline_variables: true

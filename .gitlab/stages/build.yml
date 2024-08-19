@@ -1,9 +1,19 @@
 include:
-  - local: .gitlab/templates/install_dependencies.yml
-  - local: .gitlab/templates/checkout_submodule.yml
-  - local: .gitlab/templates/install_pipeline_specific.yml
-  - local: .gitlab/templates/check_installs.yml
-  - local: .gitlab/templates/make_build.yml
+  - project: '$WORKING_ORG/$WORKING_REPO'
+    ref: $WORKING_BRANCH
+    file: '.gitlab/templates/install_dependencies.yml'
+  - project: '$WORKING_ORG/$WORKING_REPO'
+    ref: $WORKING_BRANCH
+    file: '.gitlab/templates/checkout_submodule.yml'
+  - project: '$WORKING_ORG/$WORKING_REPO'
+    ref: $WORKING_BRANCH
+    file: '.gitlab/templates/install_pipeline_specific.yml'
+  - project: '$WORKING_ORG/$WORKING_REPO'
+    ref: $WORKING_BRANCH
+    file: '.gitlab/templates/check_installs.yml'
+  - project: '$WORKING_ORG/$WORKING_REPO'
+    ref: $WORKING_BRANCH
+    file: '.gitlab/templates/make_build.yml'
 
 stages:
   - build

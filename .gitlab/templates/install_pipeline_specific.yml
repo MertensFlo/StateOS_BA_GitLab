@@ -1,3 +1,3 @@
 .install_pipeline_specific:
   script:
-  - bash ./.gitlab/scripts/install_pipeline_specific.sh $flag_arm $ARM_VERSION
+  - bash ./.gitlab/scripts/install_pipeline_specific.sh $flag_arm $ARM_PATH $ARM_TAR_PATH $ARM_DIR_PATH $ARM_CONDiTION
