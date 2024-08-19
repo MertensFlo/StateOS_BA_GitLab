@@ -5,7 +5,7 @@ build:
   trigger:
     include: 
     #- local: .gitlab/stages/build.yml
-    - 'https://github.com/$WorkingOrg/StateOS_BA_GitLab/blob/dev/.gitlab/stages/test.yml'
+    - 'https://github.com/$WORKING_ORG/StateOS_BA_GitLab/blob/dev/.gitlab/stages/test.yml'
     strategy: depend
     forward: 
       pipeline_variables: true
