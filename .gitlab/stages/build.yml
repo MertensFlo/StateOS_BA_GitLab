@@ -1,9 +1,4 @@
 include:
- # - remote: 'https://github.com/$WORKING_ORG/$WORKING_REPO/blob/$WORKING_BRANCH/.gitlab/templates/install_dependencies.yml'
- # - remote: 'https://github.com/$WORKING_ORG/$WORKING_REPO/blob/$WORKING_BRANCH/.gitlab/templates/checkout_submodule.yml'
- # - remote: 'https://github.com/$WORKING_ORG/$WORKING_REPO/blob/$WORKING_BRANCH/.gitlab/templates/install_pipeline_specific.yml'
- # - remote: 'https://github.com/$WORKING_ORG/$WORKING_REPO/blob/$WORKING_BRANCH/.gitlab/templates/check_installs.yml'
- # - remote: 'https://github.com/$WORKING_ORG/$WORKING_REPO/blob/$WORKING_BRANCH/.gitlab/templates/make_build.yml'
   - project: '$WORKING_ORG/$WORKING_REPO'
     ref: $WORKING_BRANCH
     file: '.gitlab/templates/install_dependencies.yml'
