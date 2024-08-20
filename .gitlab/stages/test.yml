@@ -1,24 +1,24 @@
 include:
-  - project: '$WORKING_ORG/$WORKING_REPO'
-    ref: $WORKING_BRANCH
+  - project: '$CALLER_ORG/$CALLER_REPO'
+    ref: $CALLER_BRANCH
     file: '.gitlab/templates/install_dependencies.yml'
-  - project: '$WORKING_ORG/$WORKING_REPO'
-    ref: $WORKING_BRANCH
+  - project: '$CALLER_ORG/$CALLER_REPO'
+    ref: $CALLER_BRANCH
     file: '.gitlab/templates/checkout_submodule.yml'
-  - project: '$WORKING_ORG/$WORKING_REPO'
-    ref: $WORKING_BRANCH
+  - project: '$CALLER_ORG/$CALLER_REPO'
+    ref: $CALLER_BRANCH
     file: '.gitlab/templates/install_pipeline_specific.yml'
-  - project: '$WORKING_ORG/$WORKING_REPO'
-    ref: $WORKING_BRANCH
+  - project: '$CALLER_ORG/$CALLER_REPO'
+    ref: $CALLER_BRANCH
     file: '.gitlab/templates/check_installs.yml'
-  - project: '$WORKING_ORG/$WORKING_REPO'
-    ref: $WORKING_BRANCH
+  - project: '$CALLER_ORG/$CALLER_REPO'
+    ref: $CALLER_BRANCH
     file: '.gitlab/templates/make_example_test.yml'
-  - project: '$WORKING_ORG/$WORKING_REPO'
-    ref: $WORKING_BRANCH
+  - project: '$CALLER_ORG/$CALLER_REPO'
+    ref: $CALLER_BRANCH
     file: '.gitlab/templates/make_static_code_test.yml'
-  - project: '$WORKING_ORG/$WORKING_REPO'
-    ref: $WORKING_BRANCH
+  - project: '$CALLER_ORG/$CALLER_REPO'
+    ref: $CALLER_BRANCH
     file: '.gitlab/templates/make_unit_test.yml'
   
 test:
