@@ -8,7 +8,7 @@ ARM_CONDTION=$5
 
 echo "script install pipeline specific"
 if [ $FLAG_ARM ]; then
-    wget $ARM_CONDTION $ARM_PATH
+    wget -q $ARM_PATH
     tar -xf $ARM_TAR_PATH
     GITHUB_PATH=$ARM_DIR_PATH
 fi
