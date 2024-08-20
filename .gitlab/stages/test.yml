@@ -38,6 +38,7 @@ test:
       variables:
         unit_test: true
   script: 
+  - echo "hallo-------------------------------------------------------------------------------------------------------------------------------"
   - !reference [.install_dependencies, script]
   - !reference [.checkout_submodule, script]
   - !reference [.install_pipeline_specific, script]

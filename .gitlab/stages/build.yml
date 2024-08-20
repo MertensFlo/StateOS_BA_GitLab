@@ -21,6 +21,7 @@ stages:
 build:
   stage: build 
   script:
+  - echo "hallo-------------------------------------------------------------------------------------------------------------------------------"
   - ls -la $CI_PROJECT_DIR
   - !reference [.install_dependencies, script]
   - git -v
