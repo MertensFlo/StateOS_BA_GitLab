@@ -16,7 +16,7 @@ example_test:
   stage: test
   #needs: ["build"]
   rules: 
-    - if: $FLAG_EXAMPLE_TEST == true
+    - if: $FLAG_EXAMPLE_TEST == "true"
   variables: 
     CURRENT_TEST: "example"
   trigger:
@@ -32,7 +32,7 @@ static_test:
   stage: test
   needs: ["build"]
   rules: 
-    - if: $FLAG_STATIC_TEST
+    - if: $FLAG_STATIC_TEST == "true"
   variables:
     CURRENT_TEST: "static"
   trigger:
@@ -48,7 +48,7 @@ unit_test:
   stage: test
   needs: ["build"]
   rules: 
-    - if: $FLAG_UNIT_TEST == true
+    - if: $FLAG_UNIT_TEST == "true"
   variables:
     CURRENT_TEST: "unit"
   trigger:
