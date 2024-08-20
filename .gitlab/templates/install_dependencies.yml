@@ -1,4 +1,4 @@
 .install_dependencies:
   script:
   - echo StateOS_BA
-  - bash ./.gitlab/scripts/install_dependencies.sh $flag_git $flag_wget $flag_xz_utils $flag_arm $flag_build_essential $flag_ninja
+  - bash ./.gitlab/scripts/install_dependencies.sh $FLAG_GIT $FLAG_WGET $FLAG_XZ_UTILSFLAG_ARM $FLAG_BUILD_ESSENTIAL $FLAG_NINJA $FLAG_PYTHON

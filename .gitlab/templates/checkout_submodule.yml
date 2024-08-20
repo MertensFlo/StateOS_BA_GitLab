@@ -1,3 +1,3 @@
 .checkout_submodule:
   script:
-  - bash ./.gitlab/scripts/checkout_submodule.sh $flag_submodule
+  - bash ./.gitlab/scripts/checkout_submodule.sh $FLAG_SUBMODULE

@@ -1,3 +1,3 @@
 .make_build:
   script:
-  - bash ./.gitlab/scripts/make_build.sh $flag_ninja
+  - bash ./.gitlab/scripts/make_build.sh $FlAG_NINJA
