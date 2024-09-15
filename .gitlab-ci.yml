@@ -1,27 +1,9 @@
 image: ubuntu:latest
 
-variables:
-  GLOBAL_VAR: "A global Variable"
-  PARENT_PIPELINE_ID: $CI_PIPELINE_ID
-
-
 stages:
   - a
   - b
   - test
-
-job_which_creates_something:
-  stage: a
-  script:
-    - echo "MY_TEST_ENV=test_value" > my_artifacts.env
-  artifacts:
-    # this is to test if the environment variable inheritance works
-    reports:
-      dotenv: my_artifacts.env
-    # this is to test if the file will show up or not, you probably don't need both
-    paths:
-      - my_artifacts.env
-
 
 build:
   stage: b
