@@ -1,10 +1,3 @@
-include:
-  - local: .gitlab/templates/dependencies.yml
-  - local: .gitlab/templates/checkout_submodul.yml
-  - local: .gitlab/templates/install_arm-none-eabi-gcc.yml
-  - local: .gitlab/templates/check_installs.yml
-
-
 stages:
   - build
 
@@ -16,13 +9,20 @@ build:
   - echo $OK
   - env | sort
   - ls -la $CI_PROJECT_DIR
-  - !reference [.install_dependencies, script]
+  - git submodule update --init --remote --recursive
   - git -v
-  - !reference [.checkout_submodule, script]
+  - git submodule update --init --remote --recursive
   - apt-get -y -qq update
   - apt-get -y -qq install cmake ninja-build
-  - !reference [.install_arm, script]
-  - !reference [.check_installs, script]
+  - apt-get update && apt-get install -y git
+  - apt-get update && apt-get install -y wget
+  - apt-get update && apt-get install -y xz-utils 
+  - apt-get update && apt-get install -y gcc-arm-none-eabi
+  - apt-get update && apt-get install -y build-essential
+  - wget -q https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz
+  - tar -xf arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz
+  - GITHUB_PATH="$( cd $(git rev-parse --show-cdup); pwd)/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin"
+  - arm-none-eabi-gcc -v
   - cmake -S. -Bbuild -GNinja
   - cmake --build build -v
   needs:
