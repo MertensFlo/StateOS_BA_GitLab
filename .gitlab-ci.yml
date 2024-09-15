@@ -1,35 +1,75 @@
 image: ubuntu:latest
 
 stages:
-  - a
-  - b
+  - build
   - test
 
 build:
-  stage: b
-  variables:
-    LOCAL_VAR: "A local Variable"
-  trigger:
-    include: 
-    - local: .gitlab/stages/build.yml
-    forward: 
-      pipeline_variables: true
+  stage: build 
+  script:
+  - echo $GLOBAL_VAR
+  - echo $LOCAL_VAR
+  - echo $OK
+  - env | sort
+  - ls -la $CI_PROJECT_DIR
+  - git submodule update --init --remote --recursive
+  - git -v
+  - git submodule update --init --remote --recursive
+  - apt-get -y -qq update
+  - apt-get -y -qq install cmake ninja-build
+  - apt-get update && apt-get install -y git
+  - apt-get update && apt-get install -y wget
+  - apt-get update && apt-get install -y xz-utils 
+  - apt-get update && apt-get install -y gcc-arm-none-eabi
+  - apt-get update && apt-get install -y build-essential
+  - wget -q https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz
+  - tar -xf arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz
+  - GITHUB_PATH="$( cd $(git rev-parse --show-cdup); pwd)/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin"
+  - arm-none-eabi-gcc -v
+  - cmake -S. -Bbuild -GNinja
+  - cmake --build build -v
 
-test:
+example_test:
   stage: test
-  trigger:
-    include: 
-    - local: .gitlab/stages/example_test.yml
-    strategy: depend
+  script: 
+  - apt-get update && apt-get install -y git
+  - apt-get update && apt-get install -y wget
+  - apt-get update && apt-get install -y xz-utils 
+  - apt-get update && apt-get install -y gcc-arm-none-eabi
+  - apt-get update && apt-get install -y build-essential
+  - git submodule update --init --remote --recursive
+  - wget -q https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz
+  - tar -xf arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz
+  - GITHUB_PATH="$( cd $(git rev-parse --show-cdup); pwd)/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin"
+  - arm-none-eabi-gcc -v
+  - bash ./.example-test.sh
 
-static_test:
-  trigger:
-    include: 
-    - local: .gitlab/stages/static_code_test.yml
-    strategy: depend
+static_code_test:
+  stage: test
+  script: 
+  - apt-get update && apt-get install -y git
+  - apt-get update && apt-get install -y wget
+  - apt-get update && apt-get install -y xz-utils 
+  - apt-get update && apt-get install -y gcc-arm-none-eabi
+  - apt-get update && apt-get install -y build-essential
+  - git submodule update --init --remote --recursive
+  - wget -q https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz
+  - tar -xf arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz
+  - GITHUB_PATH="$( cd $(git rev-parse --show-cdup); pwd)/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin"
+  - arm-none-eabi-gcc -v
+  - bash ./.stdc++-test.sh
 
 unit_test:
-  trigger:
-    include: 
-    - local: .gitlab/stages/unit_test.yml
-    strategy: depend
+  stage: test
+  script: 
+  - apt-get update && apt-get install -y git
+  - apt-get update && apt-get install -y wget
+  - apt-get update && apt-get install -y xz-utils 
+  - apt-get update && apt-get install -y gcc-arm-none-eabi
+  - apt-get update && apt-get install -y build-essential
+  - git submodule update --init --remote --recursive
+  - wget -q https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz
+  - tar -xf arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz
+  - GITHUB_PATH="$( cd $(git rev-parse --show-cdup); pwd)/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin"
+  - arm-none-eabi-gcc -v
+  - make all -f .unit-test.make
